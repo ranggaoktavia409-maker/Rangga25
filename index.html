@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Jadwal Sholat & Adzan</title>
+    <title>Jadwal Sholat Indonesia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
@@ -15,9 +15,9 @@
         .container {
             max-width: 420px;
             margin: auto;
-            background: rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.25);
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 14px;
         }
         h1 {
             text-align: center;
@@ -26,7 +26,7 @@
         select {
             width: 100%;
             padding: 10px;
-            border-radius: 8px;
+            border-radius: 10px;
             border: none;
             margin-bottom: 15px;
             font-size: 16px;
@@ -36,7 +36,7 @@
             justify-content: space-between;
             padding: 10px;
             margin: 6px 0;
-            background: rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.18);
             border-radius: 8px;
         }
         .footer {
@@ -54,23 +54,39 @@
     <p id="date" style="text-align:center;"></p>
 
     <select id="city" onchange="getPrayerTimes()">
-        <option value="Jakarta">Jakarta</option>
-        <option value="Bandung">Bandung</option>
-        <option value="Surabaya">Surabaya</option>
-        <option value="Medan">Medan</option>
-        <option value="Makassar">Makassar</option>
+        <option>Memuat kota...</option>
     </select>
 
     <div id="schedule"></div>
 
     <div class="footer">
-        Data by Aladhan API
+        Data kota: wilayah Indonesia • Jadwal: Aladhan API
     </div>
 </div>
 
 <script>
+const citySelect = document.getElementById("city");
+
+// Ambil semua kota/kabupaten Indonesia
+async function loadCities() {
+    const res = await fetch("https://ibnux.github.io/data-indonesia/kabupaten.json");
+    const cities = await res.json();
+
+    citySelect.innerHTML = "";
+
+    cities.forEach(city => {
+        const opt = document.createElement("option");
+        opt.value = city.nama.replace("Kabupaten ", "").replace("Kota ", "");
+        opt.textContent = city.nama;
+        citySelect.appendChild(opt);
+    });
+
+    getPrayerTimes();
+}
+
+// Ambil jadwal sholat
 async function getPrayerTimes() {
-    const city = document.getElementById("city").value;
+    const city = citySelect.value;
     const country = "Indonesia";
 
     const res = await fetch(
@@ -91,9 +107,8 @@ async function getPrayerTimes() {
     `;
 }
 
-getPrayerTimes();
+loadCities();
 </script>
 
 </body>
 </html>
-
