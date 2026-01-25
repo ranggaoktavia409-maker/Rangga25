@@ -1,112 +1,135 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>To-Do List</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f2f2f2;
-            padding: 40px;
-        }
-        .container {
-            background: white;
-            padding: 20px;
-            max-width: 420px;
-            margin: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        h1 {
-            text-align: center;
-        }
-        .input-group {
-            display: flex;
-            gap: 5px;
-        }
-        input {
-            flex: 1;
-            padding: 8px;
-        }
-        button {
-            padding: 8px 12px;
-            cursor: pointer;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 15px;
-        }
-        li {
-            padding: 8px;
-            background: #eee;
-            margin-top: 6px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 4px;
-        }
-        .delete {
-            color: red;
-            cursor: pointer;
-            font-weight: bold;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Jam & Cuaca Dunia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #020617;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+    .city {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .time {
+      font-size: 1.8rem;
+      margin: 10px 0;
+    }
+    .weather {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+  </style>
 </head>
 <body>
+  <h1>🌍 Live Jam Dunia & Cuaca Dunia</h1>
 
-<div class="container">
-    <h1>📝 To-Do List</h1>
+  <div class="grid" id="cards"></div>
 
-    <div class="input-group">
-        <input type="text" id="taskInput" placeholder="Masukkan tugas...">
-        <button onclick="addTask()">Tambah</button>
-    </div>
+  <footer>
+    Data cuaca menggunakan OpenWeatherMap API (API key diperlukan)
+  </footer>
 
-    <ul id="taskList"></ul>
-</div>
+  <script>
+    const cities = [
+      { name: 'Jakarta', tz: 'Asia/Jakarta', lat: -6.2, lon: 106.8 },
+      { name: 'London', tz: 'Europe/London', lat: 51.5, lon: -0.1 },
+      { name: 'New York', tz: 'America/New_York', lat: 40.7, lon: -74.0 },
+      { name: 'Tokyo', tz: 'Asia/Tokyo', lat: 35.6, lon: 139.7 },
+      { name: 'Sydney', tz: 'Australia/Sydney', lat: -33.8, lon: 151.2 }
+    ];
 
-<script>
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-    function saveTasks() {
-        localStorage.setItem("tasks", JSON.stringify(tasks));
+const apiKey = "API_KEY_KAMU_DI_SINI";
+const city = "Jakarta";
+const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+
+fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    console.log("Suhu:", data.main.temp, "°C");
+    console.log("Cuaca:", data.weather[0].description);
+  })
+  .catch(error => console.error(error));
+      
+
+
+
+      
+
+    const container = document.getElementById('cards');
+
+    function createCards() {
+      container.innerHTML = '';
+      cities.forEach(city => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="city">${city.name}</div>
+          <div class="time" id="time-${city.name}">--:--:--</div>
+          <div class="weather" id="weather-${city.name}">Memuat cuaca...</div>
+        `;
+        container.appendChild(card);
+        fetchWeather(city);
+      });
     }
 
-    function renderTasks() {
-        const list = document.getElementById("taskList");
-        list.innerHTML = "";
-
-        tasks.forEach((task, index) => {
-            const li = document.createElement("li");
-            li.innerHTML = `
-                <span>${task}</span>
-                <span class="delete" onclick="deleteTask(${index})">✖</span>
-            `;
-            list.appendChild(li);
-        });
+    function updateTime() {
+      cities.forEach(city => {
+        const now = new Date();
+        const time = new Intl.DateTimeFormat('id-ID', {
+          timeZone: city.tz,
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        }).format(now);
+        document.getElementById(`time-${city.name}`).textContent = time;
+      });
     }
 
-    function addTask() {
-        const input = document.getElementById("taskInput");
-        const value = input.value.trim();
-        if (value === "") return;
-
-        tasks.push(value);
-        input.value = "";
-        saveTasks();
-        renderTasks();
+    async function fetchWeather(city) {
+      if (!API_KEY || API_KEY.includes('ISI_API_KEY')) {
+        document.getElementById(`weather-${city.name}`).textContent = 'API key belum diisi';
+        return;
+      }
+      try {
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&units=metric&lang=id&appid=${API_KEY}`);
+        const data = await res.json();
+        document.getElementById(`weather-${city.name}`).textContent = `${data.weather[0].description}, ${data.main.temp}°C`;
+      } catch (e) {
+        document.getElementById(`weather-${city.name}`).textContent = 'Gagal memuat cuaca';
+      }
     }
 
-    function deleteTask(index) {
-        tasks.splice(index, 1);
-        saveTasks();
-        renderTasks();
-    }
-
-    renderTasks();
-</script>
-
+    createCards();
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
 </body>
 </html>
