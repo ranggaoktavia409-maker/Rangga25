@@ -1,135 +1,99 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Live Jam & Cuaca Dunia</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: #020617;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    }
-    .city {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-    .time {
-      font-size: 1.8rem;
-      margin: 10px 0;
-    }
-    .weather {
-      font-size: 1rem;
-      opacity: 0.9;
-    }
-    footer {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Jadwal Sholat & Adzan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f766e, #115e59);
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 420px;
+            margin: auto;
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 12px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .time {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            margin: 6px 0;
+            background: rgba(255,255,255,0.15);
+            border-radius: 8px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 15px;
+        }
+    </style>
 </head>
 <body>
-  <h1>🌍 Live Jam Dunia & Cuaca Dunia</h1>
 
-  <div class="grid" id="cards"></div>
+<div class="container">
+    <h1>🕌 Jadwal Sholat</h1>
+    <p id="date" style="text-align:center;"></p>
 
-  <footer>
-    Data cuaca menggunakan OpenWeatherMap API (API key diperlukan)
-  </footer>
+    <select id="city" onchange="getPrayerTimes()">
+        <option value="Jakarta">Jakarta</option>
+        <option value="Bandung">Bandung</option>
+        <option value="Surabaya">Surabaya</option>
+        <option value="Medan">Medan</option>
+        <option value="Makassar">Makassar</option>
+    </select>
 
-  <script>
-    const cities = [
-      { name: 'Jakarta', tz: 'Asia/Jakarta', lat: -6.2, lon: 106.8 },
-      { name: 'London', tz: 'Europe/London', lat: 51.5, lon: -0.1 },
-      { name: 'New York', tz: 'America/New_York', lat: 40.7, lon: -74.0 },
-      { name: 'Tokyo', tz: 'Asia/Tokyo', lat: 35.6, lon: 139.7 },
-      { name: 'Sydney', tz: 'Australia/Sydney', lat: -33.8, lon: 151.2 }
-    ];
+    <div id="schedule"></div>
 
+    <div class="footer">
+        Data by Aladhan API
+    </div>
+</div>
 
-const apiKey = "API_KEY_KAMU_DI_SINI";
-const city = "Jakarta";
-const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+<script>
+async function getPrayerTimes() {
+    const city = document.getElementById("city").value;
+    const country = "Indonesia";
 
-fetch(url)
-  .then(response => response.json())
-  .then(data => {
-    console.log("Suhu:", data.main.temp, "°C");
-    console.log("Cuaca:", data.weather[0].description);
-  })
-  .catch(error => console.error(error));
-      
+    const res = await fetch(
+        `https://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}&method=11`
+    );
+    const data = await res.json();
+    const t = data.data.timings;
 
+    document.getElementById("date").innerText =
+        data.data.date.readable;
 
+    document.getElementById("schedule").innerHTML = `
+        <div class="time"><span>Subuh</span><span>${t.Fajr}</span></div>
+        <div class="time"><span>Dzuhur</span><span>${t.Dhuhr}</span></div>
+        <div class="time"><span>Ashar</span><span>${t.Asr}</span></div>
+        <div class="time"><span>Maghrib</span><span>${t.Maghrib}</span></div>
+        <div class="time"><span>Isya</span><span>${t.Isha}</span></div>
+    `;
+}
 
-      
+getPrayerTimes();
+</script>
 
-    const container = document.getElementById('cards');
-
-    function createCards() {
-      container.innerHTML = '';
-      cities.forEach(city => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-          <div class="city">${city.name}</div>
-          <div class="time" id="time-${city.name}">--:--:--</div>
-          <div class="weather" id="weather-${city.name}">Memuat cuaca...</div>
-        `;
-        container.appendChild(card);
-        fetchWeather(city);
-      });
-    }
-
-    function updateTime() {
-      cities.forEach(city => {
-        const now = new Date();
-        const time = new Intl.DateTimeFormat('id-ID', {
-          timeZone: city.tz,
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit'
-        }).format(now);
-        document.getElementById(`time-${city.name}`).textContent = time;
-      });
-    }
-
-    async function fetchWeather(city) {
-      if (!API_KEY || API_KEY.includes('ISI_API_KEY')) {
-        document.getElementById(`weather-${city.name}`).textContent = 'API key belum diisi';
-        return;
-      }
-      try {
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&units=metric&lang=id&appid=${API_KEY}`);
-        const data = await res.json();
-        document.getElementById(`weather-${city.name}`).textContent = `${data.weather[0].description}, ${data.main.temp}°C`;
-      } catch (e) {
-        document.getElementById(`weather-${city.name}`).textContent = 'Gagal memuat cuaca';
-      }
-    }
-
-    createCards();
-    updateTime();
-    setInterval(updateTime, 1000);
-  </script>
 </body>
 </html>
+
