@@ -1,284 +1,42 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cek Otak Kamu 🔥</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: radial-gradient(circle at top, #ff00cc, #333399);
-      color: #ffffff;
-      min-height: 100vh;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: bgMove 6s infinite alternate;
-    }
-    @keyframes bgMove {
-      from { filter: hue-rotate(0deg); }
-      to { filter: hue-rotate(40deg); }
-    }
-    .card {
-      background: rgba(0,0,0,0.65);
-      border-radius: 20px;
-      padding: 26px;
-      max-width: 460px;
-      width: 100%;
-      box-shadow: 0 0 40px rgba(255,0,204,0.6);
-      animation: pop 0.5s ease;
-    }
-    @keyframes pop {
-      from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    h1 {
-      margin-top: 0;
-      text-align: center;
-      text-shadow: 0 0 10px #ff66ff;
-    }
-    .question {
-      font-size: 1.15rem;
-      margin: 20px 0 12px;
-      text-align: center;
-    }
-    button {
-      width: 100%;
-      padding: 14px;
-      margin: 8px 0;
-      border-radius: 14px;
-      border: none;
-      font-size: 1rem;
-      cursor: pointer;
-      background: linear-gradient(135deg, #ff00cc, #00ffff);
-      color: #000;
-      font-weight: bold;
-      transition: transform 0.1s ease, box-shadow 0.2s ease;
-      box-shadow: 0 0 10px rgba(0,255,255,0.6);
-    }
-    button:hover {
-      transform: scale(1.04);
-      box-shadow: 0 0 18px rgba(255,0,204,0.9);
-    }
-    .result {
-      text-align: center;
-      font-size: 1.3rem;
-      margin-top: 20px;
-      animation: shake 0.4s ease;
-    }
-    @keyframes shake {
-      0% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      50% { transform: translateX(5px); }
-      75% { transform: translateX(-5px); }
-      100% { transform: translateX(0); }
-    }
-    .note {
-      font-size: 0.8rem;
-      opacity: 0.7;
-      margin-top: 16px;
-      text-align: center;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Rekomendasi Gadget Murah</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
 
-  <div class="card">
-    <h1>🧠 CEK OTAK KAMU</h1>
-    <p style="text-align:center; opacity:0.85">Tes receh tapi jujur. Jangan pura-pura suci 😌</p>
+<header>
+  <h1>Rekomendasi Gadget Murah Terbaik</h1>
+  <p>Review jujur & pilihan terbaik sebelum beli</p>
+</header>
 
-    <div id="quiz">
-      <div class="question" id="question"></div>
-      <div id="answers"></div>
-    </div>
+<main class="container">
 
-    <div class="result" id="result" style="display:none"></div>
-    <div class="note">*100% hiburan. Kalau ketawa sendiri, itu tandanya kena.</div>
-  </div>
+  <article class="product">
+    <img src="https://via.placeholder.com/300" alt="Headset Bluetooth">
+    <h2>Headset Bluetooth XYZ</h2>
+    <p>Suara jernih, baterai awet, harga terjangkau.</p>
+    <a href="https://link-afiliasi-kamu.com" target="_blank" class="btn">
+      Beli di Shopee
+    </a>
+  </article>
 
-  <script>
-    const sound = document.getElementById('clickSound');
+  <article class="product">
+    <img src="https://via.placeholder.com/300" alt="Smartwatch Murah">
+    <h2>Smartwatch ABC</h2>
+    <p>Cocok untuk olahraga & notifikasi harian.</p>
+    <a href="https://link-afiliasi-kamu.com" target="_blank" class="btn">
+      Cek Harga
+    </a>
+  </article>
 
-    const hour = new Date().getHours();
-    const isLate = hour >= 22 || hour < 4;
+</main>
 
-    const hour = new Date().getHours();
-    const isLate = hour >= 22 || hour < 4;
+<footer>
+  <p>© 2026 Rekomendasi Gadget | Affiliate Partner</p>
+</footer>
 
-    const baseQuestions = [
-      { q: "Dengar kata 'basah', otak kamu langsung ke mana?", a: [
-        { t: "Hujan", s: 0 },
-        { t: "Cuci piring", s: 0 },
-        { t: "Kok gue mikirnya aneh…", s: 2 }
-      ]},
-      { q: "Kalau teman bilang: 'gede juga ya', kamu…", a: [
-        { t: "Bangunan", s: 0 },
-        { t: "Masalah hidup", s: 0 },
-        { t: "Langsung senyum-senyum", s: 2 }
-      ]},
-      { q: "Kata 'masuk', yang kebayang pertama?", a: [
-        { t: "Parkiran", s: 0 },
-        { t: "Kelas", s: 0 },
-        { t: "Ya ampun otak gue…", s: 2 }
-      ]},
-      { q: "Kalau lihat sosis panjang, reaksimu?", a: [
-        { t: "Laper", s: 0 },
-        { t: "Protein", s: 0 },
-        { t: "Kenapa mikir ke situ sih", s: 2 }
-      ]},
-      { q: "Teman bilang: 'keluar dikit aja', kamu…", a: [
-        { t: "Bensin", s: 0 },
-        { t: "Uang", s: 0 },
-        { t: "Ketawa sendiri", s: 2 }
-      ]}
-          ...(isLate ? [
-        { q: "Udah malam… kata 'keras' kedengarannya jadi?", a: [
-          { t: "Batu", s: 0 },
-          { t: "Masalah hidup", s: 0 },
-          { t: "Otak gue minta istirahat 😭", s: 3 }
-        ]},
-        { q: "Jam segini denger 'lama banget', reaksi kamu?", a: [
-          { t: "Nungguin download", s: 0 },
-          { t: "Antrian", s: 0 },
-          { t: "KENAPA OTAK GUE KE SITU", s: 3 }
-        ]}
-      : [])
-          ...(isLate ? [
-        { q: "Udah malam… kata 'keras' kedengarannya jadi?", a: [
-          { t: "Batu", s: 0 },
-          { t: "Prinsip hidup", s: 0 },
-          { t: "Otak gue minta istirahat 😭", s: 3 }
-        ]},
-        { q: "Jam segini dengar 'lama banget', reaksi kamu?", a: [
-          { t: "Nunggu download", s: 0 },
-          { t: "Macet", s: 0 },
-          { t: "KENAPA OTAK GUE KE SITU", s: 3 }
-        ]},
-        { q: "Kalau ada yang bilang 'tinggal dikit', kamu mikir…", a: [
-          { t: "Bensin", s: 0 },
-          { t: "Kuota", s: 0 },
-          { t: "STOP OTAK STOP", s: 3 }
-        ]},
-        { q: "Kata 'dalem banget' di jam segini artinya?", a: [
-          { t: "Laut", s: 0 },
-          { t: "Perasaan", s: 0 },
-          { t: "Ini salah jam main kuis", s: 3 }
-        ]},
-        { q: "Kalau teman chat: 'kok anget ya', kamu…", a: [
-          { t: "Cuaca", s: 0 },
-          { t: "Laptop", s: 0 },
-          { t: "GUE CAPEK 😭", s: 3 }
-        ]}
-      ] : [])
-        ];
-
-    const extraQuestions = [
-      { q: "Kalau dengar kata 'tegang', kamu mikir…", a: [
-        { t: "Ujian", s: 0 },
-        { t: "Situasi serius", s: 0 },
-        { t: "Aduh aduh otak gue", s: 2 }
-      ]},
-      { q: "Kata 'licin' biasanya kamu kaitkan dengan?", a: [
-        { t: "Jalan habis hujan", s: 0 },
-        { t: "Sepatu", s: 0 },
-        { t: "KENAPA OTAK GUE BEGINI", s: 2 }
-      ]},
-      { q: "Kalau denger 'berdiri lama', reaksimu?", a: [
-        { t: "Nunggu bus", s: 0 },
-        { t: "Antrean", s: 0 },
-        { t: "Otak gue perlu air wudhu", s: 2 }
-      ]},
-      { q: "Kata 'penuh' bikin kamu mikir apa?", a: [
-        { t: "Parkiran", s: 0 },
-        { t: "Memori HP", s: 0 },
-        { t: "Astaghfirullah", s: 2 }
-      ]},
-      { q: "Kalau teman bilang 'capek tapi puas', kamu…", a: [
-        { t: "Habis kerja", s: 0 },
-        { t: "Habis olahraga", s: 0 },
-        { t: "OTAK JANGAN NAKAL", s: 2 }
-      ]}
-    ];
-
-    const lateQuestions = isLate ? [
-      { q: "Udah malam… kata 'keras' kedengarannya jadi?", a: [
-        { t: "Batu", s: 0 },
-        { t: "Prinsip hidup", s: 0 },
-        { t: "Otak gue minta istirahat 😭", s: 3 }
-      ]},
-      { q: "Jam segini dengar 'lama banget', reaksi kamu?", a: [
-        { t: "Nunggu download", s: 0 },
-        { t: "Macet", s: 0 },
-        { t: "KENAPA OTAK GUE KE SITU", s: 3 }
-      ]},
-      { q: "Kalau ada yang bilang 'tinggal dikit', kamu mikir…", a: [
-        { t: "Bensin", s: 0 },
-        { t: "Kuota", s: 0 },
-        { t: "STOP OTAK STOP", s: 3 }
-      ]},
-      { q: "Kata 'dalem banget' di jam segini artinya?", a: [
-        { t: "Laut", s: 0 },
-        { t: "Perasaan", s: 0 },
-        { t: "Ini salah jam main kuis", s: 3 }
-      ]},
-      { q: "Kalau teman chat: 'kok anget ya', kamu…", a: [
-        { t: "Cuaca", s: 0 },
-        { t: "Laptop", s: 0 },
-        { t: "GUE CAPEK 😭", s: 3 }
-      ]}
-    ] : [];
-
-    const questions = [...baseQuestions, ...extraQuestions, ...lateQuestions];
-
-    let index = 0;
-    let score = 0;
-
-    const questionEl = document.getElementById('question');
-    const answersEl = document.getElementById('answers');
-    const resultEl = document.getElementById('result');
-
-    function showQuestion() {
-      const current = questions[index];
-      questionEl.textContent = current.q;
-      answersEl.innerHTML = '';
-
-      current.a.forEach(ans => {
-        const btn = document.createElement('button');
-        btn.textContent = ans.t;
-        btn.onclick = () => {
-          sound.currentTime = 0;
-          sound.play();
-          score += ans.s;
-          index++;
-          if (index < questions.length) {
-            showQuestion();
-          } else {
-            showResult();
-          }
-        };
-        answersEl.appendChild(btn);
-      });
-    }
-
-    function showResult() {
-      document.getElementById('quiz').style.display = 'none';
-      resultEl.style.display = 'block';
-
-      let text = '';
-      if (score <= 2) {
-        text = "😇 OTAK POLOS — kamu masih aman dari pikiran aneh.";
-      } else if (score <= 6) {
-        text = "😏 OTAK RECEH — dikit-dikit belok, tapi masih wajar.";
-      } else {
-        text = "🔥 OTAK KELEWAT LIAR — internet terlalu banyak ngaruh.";
-      }
-
-      resultEl.textContent = text;
-    }
-
-    showQuestion();
-  </script>
 </body>
 </html>
