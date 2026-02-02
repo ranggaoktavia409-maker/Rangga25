@@ -1,42 +1,61 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Rekomendasi Gadget Murah</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toko Makanan Lezat</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header>
-  <h1>Rekomendasi Gadget Murah Terbaik</h1>
-  <p>Review jujur & pilihan terbaik sebelum beli</p>
-</header>
+  <header class="hero">
+    <h1>Toko Makanan Lezat</h1>
+    <p>Makanan kekinian, fresh & bikin nagih 🍔✨</p>
+  </header>
 
-<main class="container">
+  <main class="container">
+    <h2>Menu Favorit</h2>
 
-  <article class="product">
-    <img src="https://via.placeholder.com/300" alt="Headset Bluetooth">
-    <h2>Headset Bluetooth XYZ</h2>
-    <p>Suara jernih, baterai awet, harga terjangkau.</p>
-    <a href="https://link-afiliasi-kamu.com" target="_blank" class="btn">
-      Beli di Shopee
-    </a>
-  </article>
+    <section class="menu">
+      <div class="card">
+        <img src="https://via.placeholder.com/400x300?text=Nasi+Goreng" alt="Nasi Goreng">
+        <div class="card-body">
+          <h3>Nasi Goreng Spesial</h3>
+          <span class="price">Rp20.000</span>
+          <button onclick="orderFood('Nasi Goreng Spesial')">Pesan Sekarang</button>
+        </div>
+      </div>
 
-  <article class="product">
-    <img src="https://via.placeholder.com/300" alt="Smartwatch Murah">
-    <h2>Smartwatch ABC</h2>
-    <p>Cocok untuk olahraga & notifikasi harian.</p>
-    <a href="https://link-afiliasi-kamu.com" target="_blank" class="btn">
-      Cek Harga
-    </a>
-  </article>
+      <div class="card">
+        <img src="https://via.placeholder.com/400x300?text=Ayam+Geprek" alt="Ayam Geprek">
+        <div class="card-body">
+          <h3>Ayam Geprek Level 5</h3>
+          <span class="price">Rp25.000</span>
+          <button onclick="orderFood('Ayam Geprek Level 5')">Pesan Sekarang</button>
+        </div>
+      </div>
 
-</main>
+      <div class="card">
+        <img src="https://via.placeholder.com/400x300?text=Es+Teh" alt="Es Teh">
+        <div class="card-body">
+          <h3>Es Teh Manis</h3>
+          <span class="price">Rp5.000</span>
+          <button onclick="orderFood('Es Teh Manis')">Pesan Sekarang</button>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<footer>
-  <p>© 2026 Rekomendasi Gadget | Affiliate Partner</p>
-</footer>
+  <footer>
+    © 2026 Toko Makanan Lezat • Order via WhatsApp
+  </footer>
 
+  <!-- JS -->
+  <script src="script.js"></script>
 </body>
 </html>
