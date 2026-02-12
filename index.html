@@ -1,98 +1,106 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Toko Makanan Lezat</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasa SEO Profesional</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header class="hero">
-    <h1>Toko Makanan Lezat</h1>
-    <p>Makanan kekinian, fresh & bikin nagih 🍔✨</p>
-  </header>
-
-  <main class="container">
-    <h2>Menu Favorit</h2>
-
-    <section class="menu">
-      <div class="card">
-        <img src="https://via.placeholder.com/400x300?text=Nasi+Goreng" alt="Nasi Goreng">
-        <div class="card-body">
-          <h3>Nasi Goreng Spesial</h3>
-          <span class="price">Rp20.000</span>
-          <button onclick="orderFood('Nasi Goreng Spesial')">Pesan Sekarang</button>
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Tingkatkan Ranking & Traffic Website Anda</h1>
+        <p>Kami membantu bisnis Anda masuk halaman pertama Google dan meningkatkan konversi secara signifikan.</p>
+        <div class="hero-buttons">
+            <button onclick="scrollToContact()" class="btn-primary">Konsultasi Gratis</button>
+            <button onclick="scrollToPricing()" class="btn-outline">Lihat Paket Harga</button>
         </div>
-      </div>
+    </header>
 
-      <div class="card">
-        <img src="https://via.placeholder.com/400x300?text=Ayam+Geprek" alt="Ayam Geprek">
-        <div class="card-body">
-          <h3>Ayam Geprek Level 5</h3>
-          <span class="price">Rp25.000</span>
-          <button onclick="orderFood('Ayam Geprek Level 5')">Pesan Sekarang</button>
+    <!-- Services -->
+    <section class="section">
+        <h2>Layanan SEO Kami</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>SEO On-Page</h3>
+                <p>Optimasi struktur website, konten, meta tag, dan keyword.</p>
+            </div>
+            <div class="card">
+                <h3>SEO Off-Page</h3>
+                <p>Strategi backlink berkualitas untuk meningkatkan otoritas domain.</p>
+            </div>
+            <div class="card">
+                <h3>SEO Audit</h3>
+                <p>Analisis mendalam dan laporan rutin performa SEO.</p>
+            </div>
         </div>
-      </div>
-
-      <div class="card">
-        <img src="https://via.placeholder.com/400x300?text=Es+Teh" alt="Es Teh">
-        <div class="card-body">
-          <h3>Es Teh Manis</h3>
-          <span class="price">Rp5.000</span>
-          <button onclick="orderFood('Es Teh Manis')">Pesan Sekarang</button>
-        </div>
-      </div>
-
-<!-- MENU 4 -->
-<div class="card">
-  <img src="https://via.placeholder.com/400x300?text=Mie+Goreng" alt="Mie Goreng">
-  <div class="card-body">
-    <h3>Mie Goreng Jawa</h3>
-    <span class="price">Rp18.000</span>
-    <button onclick="orderFood('Mie Goreng Jawa')">
-      Pesan Sekarang
-    </button>
-  </div>
-</div>
-
-<!-- MENU 5 -->
-<div class="card">
-  <img src="https://via.placeholder.com/400x300?text=Sate+Ayam" alt="Sate Ayam">
-  <div class="card-body">
-    <h3>Sate Ayam</h3>
-    <span class="price">Rp30.000</span>
-    <button onclick="orderFood('Sate Ayam')">
-      Pesan Sekarang
-    </button>
-  </div>
-</div>
-
-<!-- MENU 6 -->
-<div class="card">
-  <img src="https://via.placeholder.com/400x300?text=Es+Jeruk" alt="Es Jeruk">
-  <div class="card-body">
-    <h3>Es Jeruk Segar</h3>
-    <span class="price">Rp7.000</span>
-    <button onclick="orderFood('Es Jeruk Segar')">
-      Pesan Sekarang
-    </button>
-  </div>
-</div>
-      
     </section>
-  </main>
 
-  <footer>
-    © 2026 Toko Makanan Lezat • Order via WhatsApp
-  </footer>
+    <!-- Pricing -->
+    <section class="section bg-light" id="pricing">
+        <h2>Paket Harga</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Basic</h3>
+                <p class="price">Rp1.500.000/bln</p>
+                <ul>
+                    <li>Riset Keyword</li>
+                    <li>Optimasi On-Page</li>
+                    <li>Laporan Bulanan</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Professional</h3>
+                <p class="price">Rp3.000.000/bln</p>
+                <ul>
+                    <li>Semua di Basic</li>
+                    <li>Backlink Strategy</li>
+                    <li>SEO Audit Lengkap</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Enterprise</h3>
+                <p class="price">Custom</p>
+                <ul>
+                    <li>Strategi Custom</li>
+                    <li>Tim Dedicated</li>
+                    <li>Laporan Mingguan</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-  <!-- JS -->
-  <script src="script.js"></script>
+    <!-- Testimonials -->
+    <section class="section">
+        <h2>Apa Kata Klien Kami</h2>
+        <div class="grid-3" id="testimonials"></div>
+    </section>
+
+    <!-- Blog -->
+    <section class="section bg-light">
+        <h2>Blog SEO Terbaru</h2>
+        <div class="grid-3" id="blog"></div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+        <h2>Hubungi Kami</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Nama Lengkap" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Pesan Anda" rows="4" required></textarea>
+            <button type="submit" class="btn-primary">Kirim Pesan</button>
+        </form>
+    </section>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/6281234567890" class="whatsapp" target="_blank">Chat WhatsApp</a>
+
+    <footer>
+        <p>© 2026 Jasa SEO Profesional. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
