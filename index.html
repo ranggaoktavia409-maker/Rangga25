@@ -1,178 +1,272 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#07080d">
-  <title>Wallpaper3D Store — Premium 3D Wallpapers</title>
-  <meta name="description" content="Marketplace wallpaper digital 3D premium untuk HP, desktop, tablet, dan perangkat lainnya.">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Album Foto Saya</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="noise"></div>
-  <div class="ambient ambient-1"></div>
-  <div class="ambient ambient-2"></div>
 
-  <header class="header">
-    <nav class="navbar glass">
-      <a class="brand" href="#home">
-        <span class="brand-mark">W3</span>
-        <span>Wallpaper<span>3D</span> Store</span>
-      </a>
-
-      <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#catalog">Katalog</a>
-        <a href="#categories">Kategori</a>
-        <a href="#about">Tentang</a>
-      </div>
-
-      <button class="icon-btn" id="openSearch" aria-label="Cari wallpaper">⌕</button>
-    </nav>
-
-    <div class="search-panel glass" id="searchPanel">
-      <div class="search-wrap">
-        <span>⌕</span>
-        <input id="globalSearch" type="search" placeholder="Cari wallpaper, kategori, atau tema...">
-        <button id="closeSearch">Esc</button>
-      </div>
+    <!-- =========================
+         BACKGROUND VIDEO
+    ========================== -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="video/background.mp4" type="video/mp4">
+            Browser kamu tidak mendukung video.
+        </video>
     </div>
-  </header>
 
-  <main>
+    <!-- Lapisan gelap agar foto & teks lebih jelas -->
+    <div class="overlay"></div>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+    <header class="navbar">
+
+        <div class="logo">
+            📷 My Album
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#album">Album</a>
+            <a href="#about">Tentang</a>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
     <section class="hero" id="home">
-      <div class="hero-grid"></div>
 
-      <div class="hero-content reveal">
-        <div class="eyebrow"><span class="pulse"></span> CURATED DIGITAL ART MARKETPLACE</div>
-        <h1>Upgrade Your Screen With <em>Stunning 3D Wallpapers</em></h1>
-        <p>Koleksi wallpaper 3D premium untuk membuat layar kamu terlihat lebih keren.</p>
+        <div class="hero-content">
 
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#catalog">Jelajahi Wallpaper <span>→</span></a>
-          <a class="btn btn-ghost" href="#catalog" id="freeHero">Download Gratis</a>
+            <p class="small-title">
+                MY PERSONAL ALBUM
+            </p>
+
+            <h1>
+                Cerita Dalam<br>
+                <span>Setiap Foto.</span>
+            </h1>
+
+            <p class="description">
+                Kumpulan momen, kenangan, perjalanan,
+                dan cerita yang tersimpan dalam setiap gambar.
+            </p>
+
+            <a href="#album" class="button">
+                Lihat Album
+            </a>
+
         </div>
 
-        <div class="stats">
-          <div><strong>4K–8K</strong><span>Resolution</span></div>
-          <div><strong>10+</strong><span>Categories</span></div>
-          <div><strong>Instant</strong><span>Delivery</span></div>
-        </div>
-      </div>
+    </section>
 
-      <div class="hero-visual reveal">
-        <div class="hero-card tilt">
-          <div class="wallpaper-art art-neon">
-            <div class="orb orb-big"></div>
-            <div class="orb orb-small"></div>
-            <div class="light-line"></div>
-            <div class="art-copy">
-              <small>FEATURED DROP</small>
-              <h2>Neon Horizon</h2>
+
+    <!-- =========================
+         ALBUM FOTO
+    ========================== -->
+    <section class="album-section" id="album">
+
+        <div class="section-title">
+
+            <p>MEMORIES</p>
+
+            <h2>
+                Album Foto
+            </h2>
+
+            <span>
+                Beberapa momen yang ingin saya abadikan.
+            </span>
+
+        </div>
+
+
+        <div class="gallery">
+
+            <!-- FOTO 1 -->
+            <div class="photo-card"
+                 data-title="Beautiful Moment"
+                 data-description="Sebuah momen yang tidak akan terlupakan.">
+
+                <img src="foto/foto1.jpg" alt="Foto 1">
+
+                <div class="photo-info">
+                    <h3>Beautiful Moment</h3>
+                    <p>2026</p>
+                </div>
+
             </div>
-          </div>
+
+
+            <!-- FOTO 2 -->
+            <div class="photo-card"
+                 data-title="My Journey"
+                 data-description="Perjalanan dan pengalaman yang indah.">
+
+                <img src="foto/foto2.jpg" alt="Foto 2">
+
+                <div class="photo-info">
+                    <h3>My Journey</h3>
+                    <p>2026</p>
+                </div>
+
+            </div>
+
+
+            <!-- FOTO 3 -->
+            <div class="photo-card"
+                 data-title="Good Memories"
+                 data-description="Kenangan bersama orang-orang terbaik.">
+
+                <img src="foto/foto3.jpg" alt="Foto 3">
+
+                <div class="photo-info">
+                    <h3>Good Memories</h3>
+                    <p>2026</p>
+                </div>
+
+            </div>
+
+
+            <!-- FOTO 4 -->
+            <div class="photo-card"
+                 data-title="Adventure"
+                 data-description="Sebuah perjalanan penuh cerita.">
+
+                <img src="foto/foto4.jpg" alt="Foto 4">
+
+                <div class="photo-info">
+                    <h3>Adventure</h3>
+                    <p>2026</p>
+                </div>
+
+            </div>
+
+
+            <!-- FOTO 5 -->
+            <div class="photo-card"
+                 data-title="Friends"
+                 data-description="Momen sederhana bersama teman.">
+
+                <img src="foto/foto5.jpg" alt="Foto 5">
+
+                <div class="photo-info">
+                    <h3>Friends</h3>
+                    <p>2026</p>
+                </div>
+
+            </div>
+
+
+            <!-- FOTO 6 -->
+            <div class="photo-card"
+                 data-title="Special Day"
+                 data-description="Hari spesial yang penuh kebahagiaan.">
+
+                <img src="foto/foto6.jpg" alt="Foto 6">
+
+                <div class="photo-info">
+                    <h3>Special Day</h3>
+                    <p>2026</p>
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="floating-card float-one glass">
-          <span class="mini-icon cyan">✦</span>
-          <div><small>Ultra HD</small><b>4K Ready</b></div>
-        </div>
-
-        <div class="floating-card float-two glass">
-          <small>FROM</small>
-          <b>Rp 19K</b>
-          <span>Premium Collection</span>
-        </div>
-      </div>
     </section>
 
-    <section class="categories" id="categories">
-      <div class="section-shell">
-        <div class="category-scroll" id="categoryList"></div>
-      </div>
-    </section>
 
-    <section class="catalog section-shell" id="catalog">
-      <div class="section-head reveal">
-        <div>
-          <div class="eyebrow">THE COLLECTION</div>
-          <h2>Wallpaper untuk setiap <span>vibe.</span></h2>
-          <p>Pilih artwork favoritmu untuk layar HP, desktop, tablet, dan lainnya.</p>
+    <!-- =========================
+         ABOUT
+    ========================== -->
+    <section class="about" id="about">
+
+        <div class="about-content">
+
+            <p>ABOUT ME</p>
+
+            <h2>
+                Setiap foto punya cerita.
+            </h2>
+
+            <p>
+                Website ini dibuat untuk menyimpan berbagai
+                kenangan dan momen berharga dalam bentuk album digital.
+            </p>
+
         </div>
 
-        <div class="catalog-controls">
-          <div class="inline-search glass">
-            <span>⌕</span>
-            <input id="catalogSearch" type="search" placeholder="Cari wallpaper...">
-          </div>
-          <select id="sortFilter" class="glass">
-            <option value="latest">Terbaru</option>
-            <option value="free">Gratis</option>
-            <option value="premium">Premium</option>
-            <option value="popular">Terpopuler</option>
-            <option value="low">Harga terendah</option>
-            <option value="high">Harga tertinggi</option>
-          </select>
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer>
+
+        <p>
+            © 2026 My Personal Album
+        </p>
+
+        <p>
+            Made with ❤️
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         LIGHTBOX
+    ========================== -->
+    <div class="lightbox" id="lightbox">
+
+        <button class="close-button" id="closeButton">
+            &times;
+        </button>
+
+        <button class="prev-button" id="prevButton">
+            &#10094;
+        </button>
+
+        <div class="lightbox-content">
+
+            <img id="lightboxImage" src="" alt="Preview">
+
+            <div class="lightbox-text">
+
+                <h2 id="lightboxTitle">
+                    Judul Foto
+                </h2>
+
+                <p id="lightboxDescription">
+                    Deskripsi foto
+                </p>
+
+            </div>
+
         </div>
-      </div>
 
-      <div class="active-filter" id="activeFilter"></div>
-      <div class="product-grid" id="productGrid"></div>
-      <div class="empty-state hidden" id="emptyState">
-        <div>⌕</div>
-        <h3>Wallpaper tidak ditemukan</h3>
-        <p>Coba kata kunci atau filter yang berbeda.</p>
-      </div>
-    </section>
+        <button class="next-button" id="nextButton">
+            &#10095;
+        </button>
 
-    <section class="feature-strip">
-      <div class="section-shell feature-grid">
-        <article class="feature-card reveal">
-          <span>01</span><h3>High Resolution</h3><p>Artwork tajam dari 4K hingga 8K untuk layar modern.</p>
-        </article>
-        <article class="feature-card reveal">
-          <span>02</span><h3>Instant Access</h3><p>Wallpaper gratis siap diproses dengan alur download sederhana.</p>
-        </article>
-        <article class="feature-card reveal">
-          <span>03</span><h3>Secure Delivery</h3><p>File premium dirancang untuk dikirim melalui akses download yang tervalidasi.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="cta section-shell" id="about">
-      <div class="cta-inner glass reveal">
-        <div>
-          <div class="eyebrow">NEED HELP?</div>
-          <h2>Butuh bantuan atau ingin membeli wallpaper lainnya?</h2>
-          <p>Chat kami di WhatsApp untuk bantuan order, rekomendasi resolusi, atau pertanyaan produk.</p>
-        </div>
-        <a class="btn btn-primary" id="ctaWhatsapp" href="#" target="_blank" rel="noopener">Chat WhatsApp ↗</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer section-shell">
-    <div class="footer-grid">
-      <div>
-        <a class="brand" href="#home"><span class="brand-mark">W3</span><span>Wallpaper<span>3D</span> Store</span></a>
-        <p>Marketplace wallpaper digital premium untuk HP, desktop, tablet, dan perangkat lainnya.</p>
-      </div>
-      <div><h4>Explore</h4><a href="#catalog">Katalog</a><a href="#categories">Kategori</a><a href="#home">Home</a></div>
-      <div><h4>Support</h4><a href="#">Kebijakan Privasi</a><a href="#">Terms & Conditions</a><a id="footerWhatsapp" href="#" target="_blank">WhatsApp</a></div>
-      <div><h4>Social</h4><a href="#" target="_blank">Instagram</a><a href="#" target="_blank">TikTok</a></div>
     </div>
-    <div class="copyright">© 2026 Wallpaper3D Store. All rights reserved.</div>
-  </footer>
 
-  <button class="whatsapp-float" id="floatingWhatsapp" aria-label="Chat WhatsApp">◉</button>
 
-  <div class="modal-backdrop hidden" id="modalBackdrop">
-    <div class="modal glass" id="modal">
-      <button class="modal-close" id="modalClose">×</button>
-      <div id="modalContent"></div>
-    </div>
-  </div>
+    <script src="script.js"></script>
 
-  <script src="script.js"></script>
 </body>
-    </html>
+  </html>
