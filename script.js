@@ -1,74 +1,228 @@
-// Scroll Functions
-function scrollToContact() {
-    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+// =====================================
+// AMBIL ELEMENT
+// =====================================
+
+const photoCards = document.querySelectorAll(".photo-card");
+
+const lightbox = document.getElementById("lightbox");
+
+const lightboxImage = document.getElementById("lightboxImage");
+
+const lightboxTitle = document.getElementById("lightboxTitle");
+
+const lightboxDescription =
+    document.getElementById("lightboxDescription");
+
+const closeButton =
+    document.getElementById("closeButton");
+
+const prevButton =
+    document.getElementById("prevButton");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+
+// =====================================
+// DATA FOTO
+// =====================================
+
+let currentIndex = 0;
+
+const photos = [];
+
+
+// Ambil semua data foto
+photoCards.forEach((card, index) => {
+
+    const image = card.querySelector("img");
+
+    photos.push({
+        image: image.src,
+
+        title: card.dataset.title,
+
+        description: card.dataset.description
+    });
+
+
+    // Klik foto
+    card.addEventListener("click", () => {
+
+        currentIndex = index;
+
+        openLightbox();
+
+    });
+
+});
+
+
+// =====================================
+// BUKA LIGHTBOX
+// =====================================
+
+function openLightbox() {
+
+    const photo = photos[currentIndex];
+
+    lightboxImage.src = photo.image;
+
+    lightboxTitle.textContent = photo.title;
+
+    lightboxDescription.textContent =
+        photo.description;
+
+    lightbox.classList.add("active");
+
+    document.body.style.overflow = "hidden";
 }
 
-function scrollToPricing() {
-    document.getElementById("pricing").scrollIntoView({ behavior: "smooth" });
+
+// =====================================
+// TUTUP LIGHTBOX
+// =====================================
+
+function closeLightbox() {
+
+    lightbox.classList.remove("active");
+
+    document.body.style.overflow = "auto";
 }
 
-// Testimonials Data
-const testimonials = [
-    {
-        name: "Andi - Owner Toko Online",
-        review: "Traffic website saya naik 300% dalam 6 bulan. Sangat recommended!"
-    },
-    {
-        name: "Sari - Digital Marketing Manager",
-        review: "Keyword utama kami berhasil masuk halaman 1 Google dan leads meningkat drastis."
-    },
-    {
-        name: "Budi - CEO Startup",
-        review: "Strategi SEO yang terstruktur dan hasilnya nyata meningkatkan revenue."
+
+// =====================================
+// FOTO BERIKUTNYA
+// =====================================
+
+function nextPhoto() {
+
+    currentIndex++;
+
+    if (currentIndex >= photos.length) {
+        currentIndex = 0;
     }
-];
 
-const testimonialContainer = document.getElementById("testimonials");
+    openLightbox();
+}
 
-testimonials.forEach(item => {
-    const div = document.createElement("div");
-    div.className = "card";
-    div.innerHTML = `
-        <p>"${item.review}"</p>
-        <strong>${item.name}</strong>
-    `;
-    testimonialContainer.appendChild(div);
-});
 
-// Blog Data
-const blogPosts = [
-    {
-        title: "Apa Itu SEO dan Mengapa Penting?",
-        desc: "Pelajari dasar-dasar SEO untuk mengembangkan bisnis online Anda."
-    },
-    {
-        title: "Strategi Riset Keyword Efektif",
-        desc: "Panduan menemukan keyword potensial untuk meningkatkan traffic organik."
-    },
-    {
-        title: "Cara Cepat Naik Ranking Google",
-        desc: "Tips optimasi website agar cepat masuk halaman pertama."
+// =====================================
+// FOTO SEBELUMNYA
+// =====================================
+
+function previousPhoto() {
+
+    currentIndex--;
+
+    if (currentIndex < 0) {
+        currentIndex = photos.length - 1;
     }
-];
 
-const blogContainer = document.getElementById("blog");
+    openLightbox();
+}
 
-blogPosts.forEach(post => {
-    const div = document.createElement("div");
-    div.className = "card";
-    div.innerHTML = `
-        <h3>${post.title}</h3>
-        <p>${post.desc}</p>
-        <button class="btn-primary" style="margin-top:10px;">Baca Selengkapnya</button>
-    `;
-    blogContainer.appendChild(div);
+
+// =====================================
+// EVENT BUTTON
+// =====================================
+
+closeButton.addEventListener(
+    "click",
+    closeLightbox
+);
+
+nextButton.addEventListener(
+    "click",
+    nextPhoto
+);
+
+prevButton.addEventListener(
+    "click",
+    previousPhoto
+);
+
+
+// =====================================
+// KLIK AREA GELAP
+// =====================================
+
+lightbox.addEventListener("click", (event) => {
+
+    if (event.target === lightbox) {
+        closeLightbox();
+    }
+
 });
 
-// Contact Form
-const form = document.querySelector(".contact-form");
-form.addEventListener("submit", function(e) {
-    e.preventDefault();
-    alert("Pesan berhasil dikirim! Kami akan segera menghubungi Anda.");
-    form.reset();
+
+// =====================================
+// KEYBOARD
+// =====================================
+
+document.addEventListener("keydown", (event) => {
+
+    if (!lightbox.classList.contains("active")) {
+        return;
+    }
+
+    if (event.key === "Escape") {
+        closeLightbox();
+    }
+
+    if (event.key === "ArrowRight") {
+        nextPhoto();
+    }
+
+    if (event.key === "ArrowLeft") {
+        previousPhoto();
+    }
+
 });
-      
+
+
+// =====================================
+// SWIPE UNTUK HP
+// =====================================
+
+let touchStartX = 0;
+
+let touchEndX = 0;
+
+
+lightbox.addEventListener("touchstart", (event) => {
+
+    touchStartX =
+        event.changedTouches[0].screenX;
+
+});
+
+
+lightbox.addEventListener("touchend", (event) => {
+
+    touchEndX =
+        event.changedTouches[0].screenX;
+
+    handleSwipe();
+
+});
+
+
+function handleSwipe() {
+
+    const difference =
+        touchStartX - touchEndX;
+
+
+    // Swipe kiri
+    if (difference > 50) {
+        nextPhoto();
+    }
+
+
+    // Swipe kanan
+    if (difference < -50) {
+        previousPhoto();
+    }
+
+}
