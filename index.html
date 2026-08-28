@@ -1,106 +1,178 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jasa SEO Profesional</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07080d">
+  <title>Wallpaper3D Store — Premium 3D Wallpapers</title>
+  <meta name="description" content="Marketplace wallpaper digital 3D premium untuk HP, desktop, tablet, dan perangkat lainnya.">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="noise"></div>
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <h1>Tingkatkan Ranking & Traffic Website Anda</h1>
-        <p>Kami membantu bisnis Anda masuk halaman pertama Google dan meningkatkan konversi secara signifikan.</p>
-        <div class="hero-buttons">
-            <button onclick="scrollToContact()" class="btn-primary">Konsultasi Gratis</button>
-            <button onclick="scrollToPricing()" class="btn-outline">Lihat Paket Harga</button>
+  <header class="header">
+    <nav class="navbar glass">
+      <a class="brand" href="#home">
+        <span class="brand-mark">W3</span>
+        <span>Wallpaper<span>3D</span> Store</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#catalog">Katalog</a>
+        <a href="#categories">Kategori</a>
+        <a href="#about">Tentang</a>
+      </div>
+
+      <button class="icon-btn" id="openSearch" aria-label="Cari wallpaper">⌕</button>
+    </nav>
+
+    <div class="search-panel glass" id="searchPanel">
+      <div class="search-wrap">
+        <span>⌕</span>
+        <input id="globalSearch" type="search" placeholder="Cari wallpaper, kategori, atau tema...">
+        <button id="closeSearch">Esc</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-grid"></div>
+
+      <div class="hero-content reveal">
+        <div class="eyebrow"><span class="pulse"></span> CURATED DIGITAL ART MARKETPLACE</div>
+        <h1>Upgrade Your Screen With <em>Stunning 3D Wallpapers</em></h1>
+        <p>Koleksi wallpaper 3D premium untuk membuat layar kamu terlihat lebih keren.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#catalog">Jelajahi Wallpaper <span>→</span></a>
+          <a class="btn btn-ghost" href="#catalog" id="freeHero">Download Gratis</a>
         </div>
-    </header>
 
-    <!-- Services -->
-    <section class="section">
-        <h2>Layanan SEO Kami</h2>
-        <div class="grid-3">
-            <div class="card">
-                <h3>SEO On-Page</h3>
-                <p>Optimasi struktur website, konten, meta tag, dan keyword.</p>
-            </div>
-            <div class="card">
-                <h3>SEO Off-Page</h3>
-                <p>Strategi backlink berkualitas untuk meningkatkan otoritas domain.</p>
-            </div>
-            <div class="card">
-                <h3>SEO Audit</h3>
-                <p>Analisis mendalam dan laporan rutin performa SEO.</p>
-            </div>
+        <div class="stats">
+          <div><strong>4K–8K</strong><span>Resolution</span></div>
+          <div><strong>10+</strong><span>Categories</span></div>
+          <div><strong>Instant</strong><span>Delivery</span></div>
         </div>
-    </section>
+      </div>
 
-    <!-- Pricing -->
-    <section class="section bg-light" id="pricing">
-        <h2>Paket Harga</h2>
-        <div class="grid-3">
-            <div class="card">
-                <h3>Basic</h3>
-                <p class="price">Rp1.500.000/bln</p>
-                <ul>
-                    <li>Riset Keyword</li>
-                    <li>Optimasi On-Page</li>
-                    <li>Laporan Bulanan</li>
-                </ul>
+      <div class="hero-visual reveal">
+        <div class="hero-card tilt">
+          <div class="wallpaper-art art-neon">
+            <div class="orb orb-big"></div>
+            <div class="orb orb-small"></div>
+            <div class="light-line"></div>
+            <div class="art-copy">
+              <small>FEATURED DROP</small>
+              <h2>Neon Horizon</h2>
             </div>
-            <div class="card">
-                <h3>Professional</h3>
-                <p class="price">Rp3.000.000/bln</p>
-                <ul>
-                    <li>Semua di Basic</li>
-                    <li>Backlink Strategy</li>
-                    <li>SEO Audit Lengkap</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Enterprise</h3>
-                <p class="price">Custom</p>
-                <ul>
-                    <li>Strategi Custom</li>
-                    <li>Tim Dedicated</li>
-                    <li>Laporan Mingguan</li>
-                </ul>
-            </div>
+          </div>
         </div>
+
+        <div class="floating-card float-one glass">
+          <span class="mini-icon cyan">✦</span>
+          <div><small>Ultra HD</small><b>4K Ready</b></div>
+        </div>
+
+        <div class="floating-card float-two glass">
+          <small>FROM</small>
+          <b>Rp 19K</b>
+          <span>Premium Collection</span>
+        </div>
+      </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="section">
-        <h2>Apa Kata Klien Kami</h2>
-        <div class="grid-3" id="testimonials"></div>
+    <section class="categories" id="categories">
+      <div class="section-shell">
+        <div class="category-scroll" id="categoryList"></div>
+      </div>
     </section>
 
-    <!-- Blog -->
-    <section class="section bg-light">
-        <h2>Blog SEO Terbaru</h2>
-        <div class="grid-3" id="blog"></div>
+    <section class="catalog section-shell" id="catalog">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">THE COLLECTION</div>
+          <h2>Wallpaper untuk setiap <span>vibe.</span></h2>
+          <p>Pilih artwork favoritmu untuk layar HP, desktop, tablet, dan lainnya.</p>
+        </div>
+
+        <div class="catalog-controls">
+          <div class="inline-search glass">
+            <span>⌕</span>
+            <input id="catalogSearch" type="search" placeholder="Cari wallpaper...">
+          </div>
+          <select id="sortFilter" class="glass">
+            <option value="latest">Terbaru</option>
+            <option value="free">Gratis</option>
+            <option value="premium">Premium</option>
+            <option value="popular">Terpopuler</option>
+            <option value="low">Harga terendah</option>
+            <option value="high">Harga tertinggi</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="active-filter" id="activeFilter"></div>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty-state hidden" id="emptyState">
+        <div>⌕</div>
+        <h3>Wallpaper tidak ditemukan</h3>
+        <p>Coba kata kunci atau filter yang berbeda.</p>
+      </div>
     </section>
 
-    <!-- Contact -->
-    <section class="section" id="contact">
-        <h2>Hubungi Kami</h2>
-        <form class="contact-form">
-            <input type="text" placeholder="Nama Lengkap" required>
-            <input type="email" placeholder="Email" required>
-            <textarea placeholder="Pesan Anda" rows="4" required></textarea>
-            <button type="submit" class="btn-primary">Kirim Pesan</button>
-        </form>
+    <section class="feature-strip">
+      <div class="section-shell feature-grid">
+        <article class="feature-card reveal">
+          <span>01</span><h3>High Resolution</h3><p>Artwork tajam dari 4K hingga 8K untuk layar modern.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span>02</span><h3>Instant Access</h3><p>Wallpaper gratis siap diproses dengan alur download sederhana.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span>03</span><h3>Secure Delivery</h3><p>File premium dirancang untuk dikirim melalui akses download yang tervalidasi.</p>
+        </article>
+      </div>
     </section>
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/6281234567890" class="whatsapp" target="_blank">Chat WhatsApp</a>
+    <section class="cta section-shell" id="about">
+      <div class="cta-inner glass reveal">
+        <div>
+          <div class="eyebrow">NEED HELP?</div>
+          <h2>Butuh bantuan atau ingin membeli wallpaper lainnya?</h2>
+          <p>Chat kami di WhatsApp untuk bantuan order, rekomendasi resolusi, atau pertanyaan produk.</p>
+        </div>
+        <a class="btn btn-primary" id="ctaWhatsapp" href="#" target="_blank" rel="noopener">Chat WhatsApp ↗</a>
+      </div>
+    </section>
+  </main>
 
-    <footer>
-        <p>© 2026 Jasa SEO Profesional. All rights reserved.</p>
-    </footer>
+  <footer class="footer section-shell">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="#home"><span class="brand-mark">W3</span><span>Wallpaper<span>3D</span> Store</span></a>
+        <p>Marketplace wallpaper digital premium untuk HP, desktop, tablet, dan perangkat lainnya.</p>
+      </div>
+      <div><h4>Explore</h4><a href="#catalog">Katalog</a><a href="#categories">Kategori</a><a href="#home">Home</a></div>
+      <div><h4>Support</h4><a href="#">Kebijakan Privasi</a><a href="#">Terms & Conditions</a><a id="footerWhatsapp" href="#" target="_blank">WhatsApp</a></div>
+      <div><h4>Social</h4><a href="#" target="_blank">Instagram</a><a href="#" target="_blank">TikTok</a></div>
+    </div>
+    <div class="copyright">© 2026 Wallpaper3D Store. All rights reserved.</div>
+  </footer>
 
-    <script src="script.js"></script>
+  <button class="whatsapp-float" id="floatingWhatsapp" aria-label="Chat WhatsApp">◉</button>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <div class="modal glass" id="modal">
+      <button class="modal-close" id="modalClose">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
-</html>
+    </html>
